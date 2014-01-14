@@ -1,4 +1,4 @@
-emacs-for-newvcomer
+emacs-for-newcomer
 ===================
 作ったよー
 
