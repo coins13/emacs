@@ -1,5 +1,5 @@
-emacs-for-newcomer
-===================
+emacs4newcomer
+===============
 作ったよー
 
 
