@@ -24,6 +24,15 @@
 (setq display-time-24hr-format t)
 (display-time)
 
+(when (eq system-type 'darwin)
+  (set-face-attribute 'default nil :family "Consolas")
+  (set-fontset-font "fontset-default"
+                    'japanese-jisx0208
+                    '("Hiragino Maru Gothic ProN"))
+  (set-fontset-font "fontset-default"
+                    'katakana-jisx0201
+                    '("Hiragino Maru Gothic ProN")))
+
 ;;; C-kで行全体を削除
 (setq kill-whole-line t)
 
