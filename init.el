@@ -9,6 +9,9 @@
 (eval-when-compile
   (require 'cl))
 
+;;; 今はメモリ資源が豊富な為GCの感覚を長くしましょう
+(setq gc-cons-threshold (* 50 gc-cons-threshold))
+
 ;;; global-settings
 (global-auto-revert-mode 1)
 
