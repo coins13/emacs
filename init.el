@@ -36,3 +36,45 @@
 ;;; C-kで行全体を削除
 (setq kill-whole-line t)
 
+;; 対応するカッコを光らせる
+(show-paren-mode 1)
+;; ウィンドウに収まらない時だけ括弧内を光らせる
+(setq show-paren-style 'mixed)
+;; バックアップファイルを作らない
+(setq backup-inhibited t)
+;; 終了時にオートセーブファイルを消す
+(setq delete-auto-save-files t)
+;; 行番号設定
+(global-linum-mode t)
+;; F6で行番号を表示
+(global-set-key [f6] 'linum-mode)
+(setq linum-format "%3d ")
+
+;; package
+;; 詳細はEmacs JPを参照すること http://emacs-jp.github.io/packages/package-management/package-el.html
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
+;; autocomplete
+(require 'auto-complete-config)
+(ac-config-default)
+
+;; Flymake for java
+(require 'flymake)
+(defun flymake-java-init ()
+  (flymake-simple-make-init-impl
+   'flymake-create-temp-with-folder-structure nil nil
+   buffer-file-name
+   'flymake-get-java-cmdline))
+(defun flymake-get-java-cmdline (source base-dir)
+  (list "javac" (list "-J-Dfile.encoding=utf-8" "-encoding" "utf-8"
+              source)))
+(push '("\\.java$" flymake-java-init) flymake-allowed-file-name-masks)
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+(add-hook 'java-mode-hook '(lambda () (flymake-mode t)))
+
+;; undo-tree
+(require 'undo-tree)
+(global-undo-tree-mode t)
