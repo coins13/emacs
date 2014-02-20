@@ -28,6 +28,9 @@ Emacs 24.3(or higher)
  * 対応するカッコが光るようになっています
 
 ## 追加したプラグイン
+以下のプラグインを有効化するにはEmacsを起動したあとに各自で```M-x package-install```を用いて必要なプラグインをインストールしてください.詳しい利用方法は[package.el](http://emacs-jp.github.io/packages/package-management/package-el.html)をご覧ください.
+
+
 
 ### Auto Complete Mode
 GNU Emacsのための補完機能.基本的に自動的に補完を行います
