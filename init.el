@@ -57,6 +57,21 @@
 (add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+(defvar pac/install
+  '(
+    undo-tree
+    ;; Programming Support
+    auto-complete
+    flymake
+    ))
+
+(defun package-setup ()
+  "install package. define by init.el"
+  (interactive)
+  (dolist (package pac/install)
+    (when (not (package-installed-p package))
+      (package-install package))))
+
 ;; autocomplete
 ;;(require 'auto-complete-config)
 ;;(ac-config-default)
